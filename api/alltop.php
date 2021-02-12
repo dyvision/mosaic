@@ -17,7 +17,19 @@ $array = array();
 $users = json_decode($usercli->get(), true);
 foreach ($users as $user) {
     $token = json_decode($authcli->authenticate($user,'refresh_token'),true);
+    $username = json_decode($authcli->verify($token['access_token']),true)['username'];
+
+    $obj['user'] = $username;
     array_push($array,json_decode($playlistcli->get($token['access_token']),true));
+    $obj['toptracks'] = $array;
+
 }
 
-print_r(json_encode($array));
+echo "<head><link href='../style/style.css' rel='stylesheet'></head>";
+foreach($obj as $account){
+    echo "<div><h2>".$obj['username']."</h2>";
+    foreach($obj['toptracks'] as $track){
+        echo "<span>$track</span></br>";
+    }
+    echo "</div>";
+}
