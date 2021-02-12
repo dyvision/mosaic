@@ -3,7 +3,7 @@ div{
     overflow-wrap: normal;
 }
 body{
-    background: rgb(82, 82, 82);
+    background: linear-gradient(2deg, #2e2e2e, #5a5a5a)
     color:white;
     font-family: 'Courier New', Courier, monospace;
     margin:0%;
