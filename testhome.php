@@ -23,7 +23,7 @@ foreach ($users as $user) {
     $token = json_decode($authcli->authenticate($user, 'refresh_token'), true);
     $username = json_decode($authcli->verify($token['access_token']), true);
     if($username['images'][0]['url'] == null){
-        $ava = 'https://www.manufacturingusa.com/sites/manufacturingusa.com/files/default.png';
+        $ava = 'https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png';
     } else{
         $ava = $username['images'][0]['url'];
     }
