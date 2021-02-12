@@ -10,12 +10,12 @@ body{
 }
 .block{
     padding:2%;
-    box-shadow: 2 4 8 black;
+    box-shadow: 2px 4px 8px black;
     margin-left: 1%;
     margin-right: 1%;
     transition: ease 300ms;
 }
 .block:hover{
-    box-shadow: 2 4 8 rgb(163, 163, 163);
+    box-shadow: 2px 4px 8px rgb(163, 163, 163);
     transition: ease 300ms;
 }
