@@ -113,7 +113,7 @@ namespace mosaic {
         {
         }
         //Function that will create a playlist for the new year, arguments should probably include how many songs to include from a playlist. For example: "top 5 songs from each list"
-        function create($code)
+        function create($token)
         {
         }
     }
