@@ -22,7 +22,7 @@ foreach ($users as $user) {
     $token = json_decode($authcli->authenticate($user,'refresh_token'),true);
     $username = json_decode($authcli->verify($token['access_token']),true);
 
-    echo "<div><h2>".$username['display_name']."</h2>";
+    echo "<div class='block'><h2>".$username['display_name']."</h2>";
     foreach(json_decode($playlistcli->get($token['access_token']),true) as $track){
         echo "<span>$track</span></br>";
     }
