@@ -170,16 +170,13 @@ namespace mosaic {
             //start parsing for collabs
             $playlists = json_decode(file_get_contents('https://api.spotify.com/v1/me/top/tracks?time_range=short_term', false, $context), true);
 
-            $obj['user'] = $token;
 
 
             foreach ($playlists['items'] as $playlist) {
 
                 array_push($result, $playlist['name']);
             }
-
-            $obj['tracks'] = $result;
-            return json_encode($obj);
+            return json_encode($result);
         }
     }
 }
