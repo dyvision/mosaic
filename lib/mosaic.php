@@ -56,7 +56,7 @@ namespace mosaic {
             $body = implode('&', $params);
 
             //get secret
-            $secret = json_decode(file_get_contents('../creds.json'), true);
+            $secret = json_decode(file_get_contents('creds.json'), true);
 
             //build credentials for the actual system to authenticate with spotify
             $sysauth = base64_encode('8ef01039251f4b9a8a213ae17ef0e570' . ':' . $secret['secret']);
