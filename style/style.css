@@ -6,7 +6,8 @@ body{
     background: rgb(82, 82, 82);
     color:white;
     font-family: 'Courier New', Courier, monospace;
-    margin:0%
+    margin:0%;
+    vertical-align: top;
 }
 a{
     color: white; 

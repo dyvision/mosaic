@@ -13,7 +13,7 @@ try {
     $token = json_decode($mosaic->authenticate($_GET['code'],'authorization_code'),true);
     print_r($mosaic->verify($token['access_token']));
     $user->create($token['refresh_token']);
-    header('location: https://dev.plumeware.com/mosaic/alltop.php');
+    header('location: https://dev.plumeware.com/mosaic/home.php');
 } catch (Exception $e) {
     header('location: https://dev.plumeware.com/mosaic/authorize.php');
 }

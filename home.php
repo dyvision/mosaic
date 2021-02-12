@@ -15,7 +15,7 @@ $playlistcli = new top();
 $array = array();
 
 
-echo "<head><title>Mosaic</title><link href='style/style.css' rel='stylesheet'></head>";
+echo "<head><title>Mosaic</title><link href='style/style.css' rel='stylesheet'></head><body>";
 
 $users = json_decode($usercli->get(), true);
 foreach ($users as $user) {
@@ -29,3 +29,4 @@ foreach ($users as $user) {
 
     echo "</div>";
 }
+echo "</body>";
