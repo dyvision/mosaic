@@ -1,6 +1,9 @@
 div{
     display:inline-block;
     overflow-wrap: normal;
+    min-width: 275px;
+    max-width: 300px;
+    vertical-align: top;
 }
 body{
     background: linear-gradient(2deg, #2e2e2e, #5a5a5a);
