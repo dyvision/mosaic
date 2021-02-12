@@ -2,7 +2,7 @@
  //ini_set('display_errors', 1); ini_set('display_startup_errors', 1); error_reporting(E_ALL);
 
 
-include('../lib/mosaic.php');
+include('lib/mosaic.php');
 
 use mosaic\top;
 use mosaic\user;
@@ -25,7 +25,7 @@ foreach ($users as $user) {
 
 }
 
-echo "<head><link href='../style/style.css' rel='stylesheet'></head>";
+echo "<head><link href='style/style.css' rel='stylesheet'></head>";
 foreach($obj as $account){
     echo "<div><h2>".$account['user']."</h2>";
     foreach($account['toptracks'] as $track){
