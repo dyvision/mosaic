@@ -14,21 +14,18 @@ $playlistcli = new top();
 
 $array = array();
 
+
+echo "<head><link href='style/style.css' rel='stylesheet'></head>";
+
 $users = json_decode($usercli->get(), true);
 foreach ($users as $user) {
     $token = json_decode($authcli->authenticate($user,'refresh_token'),true);
     $username = json_decode($authcli->verify($token['access_token']),true);
 
-    $obj['user'] = $username['display_name'];
-    $obj['toptracks'] = json_decode($playlistcli->get($token['access_token']),true);
-
-}
-
-echo "<head><link href='style/style.css' rel='stylesheet'></head>";
-foreach($obj as $account){
-    echo "<div><h2>".$account['user']."</h2>";
-    foreach($account['toptracks'] as $track){
+    echo "<div><h2>".$username['display_name']."</h2>";
+    foreach(json_decode($playlistcli->get($token['access_token']),true) as $track){
         echo "<span>$track</span></br>";
     }
-    echo "</div>";
+
 }
+echo "</div>";
