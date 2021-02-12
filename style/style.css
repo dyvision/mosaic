@@ -31,6 +31,7 @@ a:focus{
     min-width: 275px;
     max-width: 300px;
     vertical-align: top;
+    text-align: left;
 }
 .block:hover{
     box-shadow: 2px 4px 8px rgb(163, 163, 163);
