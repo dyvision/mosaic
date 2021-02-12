@@ -27,8 +27,8 @@ foreach ($users as $user) {
 
 echo "<head><link href='../style/style.css' rel='stylesheet'></head>";
 foreach($obj as $account){
-    echo "<div><h2>".$account['username']."</h2>";
-    foreach($obj['toptracks'] as $track){
+    echo "<div><h2>".$account['name']."</h2>";
+    foreach($account['toptracks'] as $track){
         echo "<span>$track</span></br>";
     }
     echo "</div>";
