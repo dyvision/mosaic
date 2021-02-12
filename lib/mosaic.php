@@ -116,6 +116,7 @@ namespace mosaic {
         function create($token)
         {
         }
+      
     }
     class user //done
     {
