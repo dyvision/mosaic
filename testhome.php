@@ -22,8 +22,13 @@ $users = json_decode($usercli->get(), true);
 foreach ($users as $user) {
     $token = json_decode($authcli->authenticate($user, 'refresh_token'), true);
     $username = json_decode($authcli->verify($token['access_token']), true);
+    if($username['images'][0]['url'] == null){
+        $ava = 'https://www.manufacturingusa.com/sites/manufacturingusa.com/files/default.png';
+    } else{
+        $ava = $username['images'][0]['url'];
+    }
 
-    echo "<div class='block'><img class='profile' src='".$username['images'][0]['url']."'></img><a href='".$username['external_urls']['spotify']."'><h2>" . $username['display_name'] . "</h2></a>";
+    echo "<div class='block'><img class='profile' src='".$ava."'></img><a href='".$username['external_urls']['spotify']."'><h2>" . $username['display_name'] . "</h2></a>";
     foreach (json_decode($playlistcli->get($token['access_token']), true) as $track) {
         echo "<a href='".$track['link']."'>".$track['name']."</a></br>";
     }
