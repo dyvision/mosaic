@@ -8,6 +8,19 @@ body{
     font-family: 'Courier New', Courier, monospace;
     margin:0%
 }
+a{
+    color: white; 
+    text-decoration: none;
+    transition: ease 300ms;
+}
+a:hover{
+    color:rgb(178, 255, 175);
+    transition: ease 300ms;
+}
+a:focus{
+    color:rgb(224, 224, 224);
+    transition: ease 300ms;
+}
 .block{
     padding:2%;
     box-shadow: 2px 4px 8px black;
