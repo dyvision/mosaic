@@ -20,8 +20,7 @@ foreach ($users as $user) {
     $username = json_decode($authcli->verify($token['access_token']),true);
 
     $obj['user'] = $username['display_name'];
-    array_push($array,json_decode($playlistcli->get($token['access_token']),true));
-    $obj['toptracks'] = $array;
+    $obj['toptracks'] = json_decode($playlistcli->get($token['access_token']),true);
 
 }
 
