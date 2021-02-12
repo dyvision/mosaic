@@ -17,7 +17,7 @@ $array = array();
 $users = json_decode($usercli->get(), true);
 foreach ($users as $user) {
     $token = json_decode($authcli->authenticate($user,'refresh_token'),true);
-    $username = json_decode($authcli->verify($token['access_token']),true);
+    $username = json_decode($authcli->verify($token['access_token']),true)['display_name'];
 
     $obj['user'] = $username;
     array_push($array,json_decode($playlistcli->get($token['access_token']),true));
