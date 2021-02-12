@@ -23,7 +23,7 @@ foreach ($users as $user) {
     $token = json_decode($authcli->authenticate($user, 'refresh_token'), true);
     $username = json_decode($authcli->verify($token['access_token']), true);
 
-    echo "<div class='block'><img src='".$username['images'][0]['url']."' alt='https://www.manufacturingusa.com/sites/manufacturingusa.com/files/default.png'></img><a href='".$username['external_urls']['spotify']."'><h2>" . $username['display_name'] . "</h2></a>";
+    echo "<div class='block'><img class='profile' src='".$username['images'][0]['url']."'></img><a href='".$username['external_urls']['spotify']."'><h2>" . $username['display_name'] . "</h2></a>";
     foreach (json_decode($playlistcli->get($token['access_token']), true) as $track) {
         echo "<a href='".$track['link']."'>".$track['name']."</a></br>";
     }

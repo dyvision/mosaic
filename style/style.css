@@ -35,3 +35,6 @@ a:focus{
     box-shadow: 2px 4px 8px rgb(163, 163, 163);
     transition: ease 300ms;
 }
+.profile{
+    background-image:url('https://www.manufacturingusa.com/sites/manufacturingusa.com/files/default.png');
+}
