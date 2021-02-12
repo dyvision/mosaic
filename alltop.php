@@ -24,7 +24,7 @@ foreach ($users as $user) {
 
     echo "<div class='block'><h2>" . $username['display_name'] . "</h2>";
     foreach (json_decode($playlistcli->get($token['access_token']), true) as $track) {
-        echo "<span>$track</span></br>";
+        echo "<a href='".$track['link']."'>".$track['name']."</a></br>";
     }
 
     echo "</div>";

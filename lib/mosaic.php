@@ -173,8 +173,9 @@ namespace mosaic {
 
 
             foreach ($playlists['items'] as $playlist) {
-
-                array_push($result, $playlist['name']);
+                $track['name'] = $playlist['name'];
+                $track['link'] = $playlist['external_urls']['spotify'];
+                array_push($result, $track);
             }
             return json_encode($result);
         }
