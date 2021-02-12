@@ -1,9 +1,6 @@
 div{
     display:inline-block;
     overflow-wrap: normal;
-    min-width: 275px;
-    max-width: 300px;
-    vertical-align: top;
 }
 body{
     background: linear-gradient(2deg, #2e2e2e, #5a5a5a);
@@ -30,6 +27,9 @@ a:focus{
     box-shadow: 2px 4px 8px black;
     margin: 1%;
     transition: ease 300ms;
+    min-width: 275px;
+    max-width: 300px;
+    vertical-align: top;
 }
 .block:hover{
     box-shadow: 2px 4px 8px rgb(163, 163, 163);
