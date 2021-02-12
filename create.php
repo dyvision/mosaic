@@ -11,9 +11,9 @@ $user = new user();
 
 try {
     $token = json_decode($mosaic->authenticate($_GET['code'],'authorization_code'),true);
-    $mosaic->verify($token['access_token']);
+    print_r($mosaic->verify($token['access_token']));
     $user->create($token['refresh_token']);
-    header('location: https://paos.io');
+    //header('location: https://paos.io');
 } catch (Exception $e) {
     header('location: https://dev.plumeware.com/mosaic/authorize.php');
 }
