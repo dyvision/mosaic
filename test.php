@@ -11,13 +11,9 @@ $tokencont = file_get_contents("tokens.json");
 $Parsetoken = json_decode($tokencont,true);
 
 foreach($Parsetoken as $token){
-   echo $token
+   echo $token;
    $tjson = json_decode($mosaic->authenticate($token),true);
    Print_R($mosaic->Verify($tjson[ 'access_token']));
-   
-   
-
-
 }
 
 
