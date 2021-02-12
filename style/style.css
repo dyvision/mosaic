@@ -13,6 +13,7 @@ a{
     color: white; 
     text-decoration: none;
     transition: ease 300ms;
+    display: block;
 }
 a:hover{
     color:rgb(178, 255, 175);

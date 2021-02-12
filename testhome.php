@@ -30,7 +30,7 @@ foreach ($users as $user) {
 
     echo "<div class='block'><img class='profile' src='".$ava."'></img><a href='".$username['external_urls']['spotify']."'><h2>" . $username['display_name'] . "</h2></a><item class='songlist'>";
     foreach (json_decode($playlistcli->get($token['access_token']), true) as $track) {
-        echo "<a href='".$track['link']."'>".$track['name']."</a></br>";
+        echo "<a href='".$track['link']."'>".$track['name']."</a>";
     }
 
     echo "</item></div>";
