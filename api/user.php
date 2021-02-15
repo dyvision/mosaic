@@ -10,7 +10,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
    $usercli = New user();
    $userarray = array();
 
-   foreach($usercli->get() as $user){
+   foreach(json_decode($usercli->get(),true) as $user){
        if($user != null){
            $jtoken = json_decode($authcli->authenticate($user,'refresh_token'),true);
            array_push($userarray,json_decode($authcli->verify($jtoken['access_token']),true));
