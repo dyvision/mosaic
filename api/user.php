@@ -2,18 +2,13 @@
 include('../lib/mosaic.php');
 chdir('../');
 
-use mosaic\user;
-use mosaic\auth;
 
 if($_SERVER['REQUEST_METHOD'] == 'GET'){
-   $authcli = New auth();
-   $usercli = New user();
    $userarray = array();
 
-   foreach(json_decode($usercli->get(),true) as $user){
+   foreach(json_decode(file_get_contents('lists.json'),true) as $user){
        if($user != null){
-           $jtoken = json_decode($authcli->authenticate($user,'refresh_token'),true);
-           array_push($userarray,json_decode($authcli->verify($jtoken['access_token']),true));
+           array_push($userarray,$user);
        }
    }
    print_r(json_encode($userarray));
