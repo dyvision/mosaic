@@ -18,7 +18,7 @@ $users = json_decode($usercli->get(), true);
 foreach ($users as $user) {
     if ($user == null) {
     } else {
-        $obj = (object)[];
+        $obj = [];
         $tracks = [];
         $token = json_decode($authcli->authenticate($user, 'refresh_token'), true);
         $username = json_decode($authcli->verify($token['access_token']), true);
