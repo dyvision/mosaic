@@ -10,8 +10,8 @@ $users = json_decode(file_get_contents('lists.json'),true);
 foreach ($users as $user) {
     if ($user == null) {
     } else {
-        echo "<div class='block'><img class='profile' src='" . $users['ava'] . "'></img><div class='songlist'><a href='" . $users['url']. "'><h2>" . $users['display_name'] . "</h2></a>";
-        foreach ($users['tracks'] as $track) {
+        echo "<div class='block'><img class='profile' src='" . $user['ava'] . "'></img><div class='songlist'><a href='" . $user['url']. "'><h2>" . $user['display_name'] . "</h2></a>";
+        foreach ($user['tracks'] as $track) {
             echo "<a href='" . $track['link'] . "'>" . $track['name'] . "</a>";
         }
 
