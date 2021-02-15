@@ -40,4 +40,7 @@ foreach ($users as $user) {
         array_push($array,$obj);
     }
 }
-echo json_encode($array);
+
+$file = fopen('lists.json','w');
+fwrite($file,json_encode($array));
+fclose($file);
