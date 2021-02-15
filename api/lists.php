@@ -44,3 +44,7 @@ foreach ($users as $user) {
 $file = fopen('lists.json','w');
 fwrite($file,json_encode($array));
 fclose($file);
+
+$file = fopen('log.log','a');
+fwrite($file,'New List');
+fclose($file);
