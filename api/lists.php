@@ -46,5 +46,5 @@ fwrite($file,json_encode($array));
 fclose($file);
 
 $file = fopen('log.log','a');
-fwrite($file,'New List');
+fwrite($file,"New List\r\n");
 fclose($file);
