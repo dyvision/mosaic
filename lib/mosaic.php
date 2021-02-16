@@ -206,6 +206,9 @@ namespace mosaic {
                     array_push($array, $item);
                 }
             }
+            $file = fopen('tokens.json', 'w');
+            fwrite($file, json_encode($array));
+            fclose($file);
         }
     }
     class top
