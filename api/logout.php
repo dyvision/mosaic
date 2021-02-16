@@ -6,3 +6,4 @@ use mosaic\auth;
 
 $auth = new auth();
 $auth->logout();
+header('location: /');
