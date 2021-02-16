@@ -101,12 +101,13 @@ namespace mosaic {
             //return user info
             $user = json_decode(file_get_contents('https://api.spotify.com/v1/me', false, $context), true);
 
-            setcookie('username', $user['id'],0,'/');
-            setcookie('refresh', $refreshtoken,0,'/');
+            setcookie('username', $user['id'], 0, '/');
+            setcookie('refresh', $refreshtoken, 0, '/');
         }
-        function logout(){
-            setcookie('username',null,0,'/');
-            setcookie('refresh',null,0,'/');
+        function logout()
+        {
+            setcookie('username', null, 0, '/');
+            setcookie('refresh', null, 0, '/');
         }
         function verify($token)
         {
@@ -144,9 +145,18 @@ namespace mosaic {
             return;
         }
         //Function to pull all user tokens from our text database to use for interacting with spotify under their name
-        function get()
+        function get($id = null)
         {
-            return file_get_contents('/var/www/html/mosaic/tokens.json');
+            if ($id != null) {
+                $users = json_decode(file_get_contents('/var/www/html/mosaic/tokens.json'),true);
+                foreach($users as $user){
+                    if($user['display_name'] == $id){
+                        return json_encode($user);
+                    }
+                }
+            } else {
+                return file_get_contents('/var/www/html/mosaic/tokens.json');
+            }
         }
         //Function to append a new user to that text database
         function create($id, $refreshtoken)
@@ -163,12 +173,11 @@ namespace mosaic {
                     if ($token['username'] == $obj['username']) {
                         $found = 'yes';
                     } else {
-                        
                     }
                 }
                 if ($found == 'yes') {
                 } else {
-                    array_push($tokens,$obj);
+                    array_push($tokens, $obj);
                     $file = fopen('tokens.json', 'w');
                     fwrite($file, json_encode($tokens));
                     fclose($file);
