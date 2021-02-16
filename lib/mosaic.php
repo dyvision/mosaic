@@ -18,7 +18,7 @@ namespace mosaic {
             $params = [
                 'client_id=8ef01039251f4b9a8a213ae17ef0e570',
                 'response_type=code',
-                'redirect_uri=https://dev.plumeware.com/mosaic/create.php?confirm',
+                'redirect_uri=https://mosaic.paos.io/create.php',
                 'scope=playlist-read-private%20playlist-read-collaborative%20user-top-read'
             ];
 
