@@ -64,6 +64,6 @@ a:focus {
     top: 0;
     left: 0;
     overflow-x: hidden;
-    transition: ease;
+    transition: ease 300ms;
     transform: translate(-100%);
 }
