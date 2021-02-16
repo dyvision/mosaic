@@ -42,13 +42,13 @@ namespace mosaic {
                 $params = [
                     "code=$code",
                     "grant_type=$type",
-                    'redirect_uri=https://mosaic.paos.io/create.php?confirm'
+                    'redirect_uri=https://mosaic.paos.io/create.php'
                 ];
             } else {
                 $params = [
                     "refresh_token=$code",
                     "grant_type=$type",
-                    'redirect_uri=https://mosaic.paos.io/create.php?confirm'
+                    'redirect_uri=https://mosaic.paos.io/create.php'
                 ];
             }
 
