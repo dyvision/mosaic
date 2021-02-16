@@ -18,7 +18,6 @@ $usercli = new top();
 $user = json_decode($usercli->get(null,$_COOKIE['username']),true);
 
 echo "<div id='sidebar'><img class='profile' src='" . $user['ava'] . "'></img><div class='songlist'><a href='" . $user['url']. "'><h2>" . $user['display_name'] . "</h2></a>";
-echo json_encode($user);
 foreach ($user['tracks'] as $track) {
     echo "<a href='" . $track['link'] . "'>" . $track['name'] . "</a>";
 }
