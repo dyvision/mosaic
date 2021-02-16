@@ -12,9 +12,9 @@ $user = new user();
 try {
     $token = json_decode($mosaic->authenticate($_GET['code'],'authorization_code'),true);
     $userj = json_decode($mosaic->verify($token['access_token']),true);
-    $mosaic->login($token['access_token'],$token['refresh_token']);
     $user->create($userj['id'],$token['refresh_token']);
     shell_exec('curl https://mosaic.paos.io/api/lists.php &');
+    $mosaic->login($token['access_token'],$token['refresh_token']);
     header('location: https://mosaic.paos.io');
 } catch (Exception $e) {
     header('location: https://mosaic.paos.io/authorize.php');
