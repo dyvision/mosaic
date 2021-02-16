@@ -4,7 +4,7 @@ include('lib/mosaic.php');
 
 use mosaic\top;
 
-$kofi = "<script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Support Mosaic on Ko-fi', '#29abe0', 'E1E822CWN');kofiwidget2.draw();</script>"
+$kofi = "<script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Support Mosaic on Ko-fi', '#29abe0', 'E1E822CWN');kofiwidget2.draw();</script>";
 
 if(isset($_COOKIE['refresh'])){
     $header = "<h3 class='navbar-item'><a  onclick='showprofile();'>Profile</a></h3><h3 class='navbar-item'><a  href='api/logout.php'>Logout</a></h3>$kofi";
