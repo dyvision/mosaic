@@ -147,6 +147,7 @@ namespace mosaic {
         //Function to append a new user to that text database
         function create($id, $refreshtoken)
         {
+            $found = 'no';
             $obj = [];
             $obj['username'] = $id;
             $obj['token'] = $refreshtoken;
@@ -163,6 +164,7 @@ namespace mosaic {
                 }
                 if ($found == 'yes') {
                 } else {
+                    array_push($tokens,$obj);
                     $file = fopen('tokens.json', 'w');
                     fwrite($file, json_encode($tokens));
                     fclose($file);
