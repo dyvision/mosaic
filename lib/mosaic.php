@@ -101,8 +101,8 @@ namespace mosaic {
             //return user info
             $user = json_decode(file_get_contents('https://api.spotify.com/v1/me', false, $context), true);
 
-            setcookie('username', $user['id']);
-            setcookie('refresh', $refreshtoken);
+            setcookie('username', $user['id'],0,'/');
+            setcookie('refresh', $refreshtoken,0,'/');
         }
         function verify($token)
         {
