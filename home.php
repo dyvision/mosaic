@@ -34,17 +34,15 @@ echo "<h3><a style='display:none'>Groups</a></h3><h3><a onclick='hideprofile();'
 $users = json_decode(file_get_contents('lists.json'), true);
 
 foreach ($users as $user) {
-    if (json_decode($lookupcli->get($user['id']), true)['private'] == true) {
+    $privacy = json_decode($lookupcli->get($user['id']), true);
+    if ($user == null or $privacy['privacy'] == true) {
     } else {
-        if ($user == null) {
-        } else {
-            echo "<div class='block'><img class='profile' src='" . $user['ava'] . "'></img><div class='songlist'><a href='" . $user['url'] . "'><h2>" . $user['display_name'] . "</h2></a>";
-            foreach ($user['tracks'] as $track) {
-                echo "<a href='" . $track['link'] . "'>" . $track['name'] . "</a>";
-            }
-
-            echo "</div></div>";
+        echo "<div class='block'><img class='profile' src='" . $user['ava'] . "'></img><div class='songlist'><a href='" . $user['url'] . "'><h2>" . $user['display_name'] . "</h2></a>";
+        foreach ($user['tracks'] as $track) {
+            echo "<a href='" . $track['link'] . "'>" . $track['name'] . "</a>";
         }
+
+        echo "</div></div>";
     }
 }
 echo "</center></body>";
