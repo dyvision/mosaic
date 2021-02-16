@@ -148,9 +148,9 @@ namespace mosaic {
         function get($id = null)
         {
             if ($id != null) {
-                $users = json_decode(file_get_contents('/var/www/html/mosaic/tokens.json'),true);
-                foreach($users as $user){
-                    if($user['display_name'] == $id){
+                $users = json_decode(file_get_contents('/var/www/html/mosaic/tokens.json'), true);
+                foreach ($users as $user) {
+                    if ($user['display_name'] == $id) {
                         return json_encode($user);
                     }
                 }
@@ -201,28 +201,37 @@ namespace mosaic {
             return;
         }
         //Function that gets all collaborative playlists related to a person's account
-        function get($token)
+        function get($token=null, $id = null)
         {
-            $result = array();
+            if ($id != null) {
+                $users = json_decode(file_get_contents('/var/www/html/mosaic/lists.json'), true);
+                foreach ($users as $user) {
+                    if ($user['display_name'] == $id) {
+                        return json_encode($user);
+                    }
+                }
+            } else {
+                $result = array();
 
-            //create auth header
-            $context = stream_context_create([
-                "http" => [
-                    "header" => "Authorization: Bearer $token"
-                ]
-            ]);
+                //create auth header
+                $context = stream_context_create([
+                    "http" => [
+                        "header" => "Authorization: Bearer $token"
+                    ]
+                ]);
 
-            //start parsing for collabs
-            $playlists = json_decode(file_get_contents('https://api.spotify.com/v1/me/top/tracks?time_range=short_term', false, $context), true);
+                //start parsing for collabs
+                $playlists = json_decode(file_get_contents('https://api.spotify.com/v1/me/top/tracks?time_range=short_term', false, $context), true);
 
 
 
-            foreach ($playlists['items'] as $playlist) {
-                $track['name'] = $playlist['name'];
-                $track['link'] = $playlist['external_urls']['spotify'];
-                array_push($result, $track);
+                foreach ($playlists['items'] as $playlist) {
+                    $track['name'] = $playlist['name'];
+                    $track['link'] = $playlist['external_urls']['spotify'];
+                    array_push($result, $track);
+                }
+                return json_encode($result);
             }
-            return json_encode($result);
         }
     }
 }
