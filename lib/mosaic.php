@@ -150,7 +150,7 @@ namespace mosaic {
             if ($id != null) {
                 $users = json_decode(file_get_contents('/var/www/html/mosaic/tokens.json'), true);
                 foreach ($users as $item) {
-                    if ($item['display_name'] == $id) {
+                    if ($item['username'] == $id) {
                         return json_encode($item);
                     }
                 }
