@@ -12,7 +12,7 @@ if(isset($_COOKIE['refresh'])){
 
 
 echo "<head><link rel='shortcut icon' type='image/png' href='style/MosaicLogo.png'/><title>Mosaic</title><meta name='viewport' content='width=device-width, initial-scale=1'>
-<link href='style/style.css' rel='stylesheet'><script src='lib/mosaic.js'></script></head><body onload='getcount();'></br><center><h1>Welcome to Mosaic</h1>$header<span>Check out <span id='count'>0</span> users' top songs for the past 4 weeks. Click on a song to listen to it or share yours by clicking connect</span></center></br>";
+<link href='style/style.css' rel='stylesheet'><script src='lib/mosaic.js'></script></head><body onload='getcount();'></br><center><h1>Welcome to Mosaic</h1>$header</br><span>Check out <span id='count'>0</span> users' top songs for the past 4 weeks. Click on a song to listen to it or share yours by clicking connect</span></center></br>";
 
 $usercli = new top();
 $user = json_decode($usercli->get(null,$_COOKIE['username']),true);
