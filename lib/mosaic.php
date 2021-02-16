@@ -157,13 +157,16 @@ namespace mosaic {
                 foreach ($tokens as $token) {
                     if ($token['username'] == $obj['username']) {
                     } else {
-                        array_push($tokens, $obj);
+                        $found = 'yes';
                     }
                 }
-                $file = fopen('tokens.json', 'w');
-                fwrite($file, json_encode($tokens));
-                fclose($file);
-                $result['message'] = 'Successfully added user';
+                if ($found == 'yes') {
+                } else {
+                    $file = fopen('tokens.json', 'w');
+                    fwrite($file, json_encode($tokens));
+                    fclose($file);
+                    $result['message'] = 'Successfully added user';
+                }
             } catch (Exception $e) {
                 $obj = json_encode($obj);
                 $file = fopen('tokens.json', 'w');
