@@ -88,7 +88,7 @@ namespace mosaic {
             return $response;
         }
         //Function to see if the user actually exists
-        function verify($token)
+        function login($token,$refreshtoken)
         {
 
             //create auth header
@@ -99,7 +99,23 @@ namespace mosaic {
             ]);
 
             //return user info
+            $user = json_decode(file_get_contents('https://api.spotify.com/v1/me', false, $context),true);
+
+            setcookie('username',$user['id']);
+            setcookie('refresh',$refreshtoken);
+        }
+        function verify($token){
+
+             //create auth header
+             $context = stream_context_create([
+                "http" => [
+                    "header" => "Authorization: Bearer $token"
+                ]
+            ]);
+
+            //return user info
             return file_get_contents('https://api.spotify.com/v1/me', false, $context);
+
         }
     }
     class playlist
@@ -130,19 +146,24 @@ namespace mosaic {
             return file_get_contents('/var/www/html/mosaic/tokens.json');
         }
         //Function to append a new user to that text database
-        function create($refreshtoken)
+        function create($id,$refreshtoken)
         {
+            $obj = [];
+            $obj['username'] = $id;
+            $obj['token'] = $refreshtoken;
+
             //open json array of tokens
             try {
                 $tokens = json_decode(file_get_contents('tokens.json'), true);
-                array_push($tokens, $refreshtoken);
+                array_push($tokens, $obj);
                 $file = fopen('tokens.json', 'w');
                 fwrite($file, json_encode($tokens));
                 fclose($file);
                 $result['message'] = 'Successfully added user';
             } catch (Exception $e) {
+                $obj = json_encode($obj);
                 $file = fopen('tokens.json', 'w');
-                fwrite($file, "['$refreshtoken']");
+                fwrite($file, "['$obj']");
                 fclose($file);
                 $result['message'] = 'Create token file and added user';
                 $result['error'] = $e->getMessage();

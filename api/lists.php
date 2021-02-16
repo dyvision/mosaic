@@ -20,7 +20,7 @@ foreach ($users as $user) {
     } else {
         $obj = [];
         $tracks = [];
-        $token = json_decode($authcli->authenticate($user, 'refresh_token'), true);
+        $token = json_decode($authcli->authenticate($user['token'], 'refresh_token'), true);
         $username = json_decode($authcli->verify($token['access_token']), true);
         if ($username['images'][0]['url'] == null) {
             $obj['ava'] = 'https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png';
