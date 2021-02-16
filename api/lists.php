@@ -41,8 +41,6 @@ foreach ($users as $user) {
     }
 }
 
-echo json_encode($array);
-
 $file = fopen('lists.json','w');
 fwrite($file,json_encode($array));
 fclose($file);

@@ -14,7 +14,7 @@ try {
     $userj = json_decode($mosaic->verify($token['access_token']),true);
     $mosaic->login($token['access_token'],$token['refresh_token']);
     $user->create($userj['id'],$token['refresh_token']);
-    file_get_contents('https://mosaic.paos.io/api/lists.php');
+    shell_exec('curl https://mosaic.paos.io/api/lists.php &');
     header('location: https://mosaic.paos.io');
 } catch (Exception $e) {
     header('location: https://mosaic.paos.io/authorize.php');
