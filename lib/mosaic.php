@@ -159,7 +159,7 @@ namespace mosaic {
             }
         }
         //Function to append a new user to that text database
-        function create($id, $refreshtoken,$private=null)
+        function create($id, $refreshtoken, $private = null)
         {
             $found = 'no';
             $obj = [];
@@ -194,6 +194,19 @@ namespace mosaic {
             }
             return json_encode($result);
         }
+        function update($id, $private)
+        {
+            $users = json_decode(file_get_contents('/var/www/html/mosaic/tokens.json'), true);
+            $array = [];
+            foreach ($users as $item) {
+                if ($item['username'] == $id) {
+                    $item['private'] = $private;
+                    array_push($array, $item);
+                } else {
+                    array_push($array, $item);
+                }
+            }
+        }
     }
     class top
     {
@@ -202,7 +215,7 @@ namespace mosaic {
             return;
         }
         //Function that gets all collaborative playlists related to a person's account
-        function get($token=null, $id = null)
+        function get($token = null, $id = null)
         {
             if ($id != null) {
                 $users = json_decode(file_get_contents('/var/www/html/mosaic/lists.json'), true);
