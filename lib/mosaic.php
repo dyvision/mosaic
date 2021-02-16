@@ -104,6 +104,10 @@ namespace mosaic {
             setcookie('username', $user['id'],0,'/');
             setcookie('refresh', $refreshtoken,0,'/');
         }
+        function logout(){
+            setcookie('username',null,0,'/');
+            setcookie('refresh',null,0,'/');
+        }
         function verify($token)
         {
 
