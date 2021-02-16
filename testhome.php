@@ -15,7 +15,7 @@ echo "<head><link rel='shortcut icon' type='image/png' href='style/MosaicLogo.pn
 <link href='style/style.css' rel='stylesheet'><script src='lib/mosaic.js'></script></head><body onload='getcount();'></br><center><h1>Welcome to Mosaic</h1><h3>$header</h3><span>Check out <span id='count'>0</span> users' top songs for the past 4 weeks. Click on a song to listen to it or share yours by clicking connect</span></center></br>";
 
 $usercli = new user();
-$user = json_decode($usercli->get($_COOKIE['username']));
+$user = json_decode($usercli->get($_COOKIE['username']),true);
 
 echo "<div id='sidebar'><img class='profile' src='" . $user['ava'] . "'></img><div class='songlist'><a href='" . $user['url']. "'><h2>" . $user['display_name'] . "</h2></a>";
 foreach ($user['tracks'] as $track) {
