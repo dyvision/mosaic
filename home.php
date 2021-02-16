@@ -35,7 +35,7 @@ $users = json_decode(file_get_contents('lists.json'), true);
 
 foreach ($users as $user) {
     $privacy = json_decode($lookupcli->get($user['display_name']), true);
-    if ($user == null or $privacy['privacy'] == true) {
+    if ($user == null or $privacy['private'] == true) {
     } else {
         echo "<div class='block'><img class='profile' src='" . $user['ava'] . "'></img><div class='songlist'><a href='" . $user['url'] . "'><h2>" . $user['display_name'] . "</h2></a>";
         foreach ($user['tracks'] as $track) {
