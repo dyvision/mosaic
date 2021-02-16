@@ -68,3 +68,7 @@ a:focus {
     transition: ease 300ms;
     transform: translate(-100%);
 }
+
+.navbar-item {
+    display: inline-block;
+}

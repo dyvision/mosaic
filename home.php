@@ -5,7 +5,7 @@ include('lib/mosaic.php');
 use mosaic\top;
 
 if(isset($_COOKIE['refresh'])){
-    $header = "<a onclick='showprofile();'>Profile</a><a href='api/logout.php'>Logout</a>";
+    $header = "<a class='navbar-item' onclick='showprofile();'>Profile</a><a class='navbar-item' href='api/logout.php'>Logout</a>";
 }else{
     $header = "<a href='authorize.php'>Connect</a>";
 }
