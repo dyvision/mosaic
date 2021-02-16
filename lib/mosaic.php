@@ -156,8 +156,9 @@ namespace mosaic {
                 $tokens = json_decode(file_get_contents('tokens.json'), true);
                 foreach ($tokens as $token) {
                     if ($token['username'] == $obj['username']) {
-                    } else {
                         $found = 'yes';
+                    } else {
+                        
                     }
                 }
                 if ($found == 'yes') {
