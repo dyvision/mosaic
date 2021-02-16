@@ -149,9 +149,9 @@ namespace mosaic {
         {
             if ($id != null) {
                 $users = json_decode(file_get_contents('/var/www/html/mosaic/tokens.json'), true);
-                foreach ($users as $user) {
-                    if ($user['display_name'] == $id) {
-                        return json_encode($user);
+                foreach ($users as $item) {
+                    if ($item['display_name'] == $id) {
+                        return json_encode($item);
                     }
                 }
             } else {
