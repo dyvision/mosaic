@@ -17,7 +17,7 @@ echo "<head><link rel='shortcut icon' type='image/png' href='style/MosaicLogo.pn
 $usercli = new top();
 $user = json_decode($usercli->get(null,$_COOKIE['username']),true);
 
-echo "<div id='sidebar'><img class='profile' src='" . $user['ava'] . "'></img><div class='songlist'><a href='" . $user['url']. "'><h2>" . $user['display_name'] . "</h2></a>";
+echo "<div id='sidebar'><img class='profile' style='width:100%;' src='" . $user['ava'] . "'></img><div class='songlist'><a href='" . $user['url']. "'><h2>" . $user['display_name'] . "</h2></a>";
 foreach ($user['tracks'] as $track) {
     echo "<a href='" . $track['link'] . "'>" . $track['name'] . "</a>";
 }
