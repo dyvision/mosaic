@@ -159,12 +159,13 @@ namespace mosaic {
             }
         }
         //Function to append a new user to that text database
-        function create($id, $refreshtoken)
+        function create($id, $refreshtoken,$private=null)
         {
             $found = 'no';
             $obj = [];
             $obj['username'] = $id;
             $obj['token'] = $refreshtoken;
+            $obj['private'] = false;
 
             //open json array of tokens
             try {
