@@ -88,7 +88,7 @@ namespace mosaic {
             return $response;
         }
         //Function to see if the user actually exists
-        function login($token,$refreshtoken)
+        function login($token, $refreshtoken)
         {
 
             //create auth header
@@ -99,15 +99,16 @@ namespace mosaic {
             ]);
 
             //return user info
-            $user = json_decode(file_get_contents('https://api.spotify.com/v1/me', false, $context),true);
+            $user = json_decode(file_get_contents('https://api.spotify.com/v1/me', false, $context), true);
 
-            setcookie('username',$user['id']);
-            setcookie('refresh',$refreshtoken);
+            setcookie('username', $user['id']);
+            setcookie('refresh', $refreshtoken);
         }
-        function verify($token){
+        function verify($token)
+        {
 
-             //create auth header
-             $context = stream_context_create([
+            //create auth header
+            $context = stream_context_create([
                 "http" => [
                     "header" => "Authorization: Bearer $token"
                 ]
@@ -115,7 +116,6 @@ namespace mosaic {
 
             //return user info
             return file_get_contents('https://api.spotify.com/v1/me', false, $context);
-
         }
     }
     class playlist
@@ -132,7 +132,6 @@ namespace mosaic {
         function create($token)
         {
         }
-      
     }
     class user //done
     {
@@ -146,7 +145,7 @@ namespace mosaic {
             return file_get_contents('/var/www/html/mosaic/tokens.json');
         }
         //Function to append a new user to that text database
-        function create($id,$refreshtoken)
+        function create($id, $refreshtoken)
         {
             $obj = [];
             $obj['username'] = $id;
@@ -155,7 +154,12 @@ namespace mosaic {
             //open json array of tokens
             try {
                 $tokens = json_decode(file_get_contents('tokens.json'), true);
-                array_push($tokens, $obj);
+                foreach ($tokens as $token) {
+                    if ($token['username'] == $obj['username']) {
+                    } else {
+                        array_push($tokens, $obj);
+                    }
+                }
                 $file = fopen('tokens.json', 'w');
                 fwrite($file, json_encode($tokens));
                 fclose($file);
