@@ -21,7 +21,7 @@ echo "<div id='sidebar'><img class='profile' style='width:100%;' src='" . $user[
 foreach ($user['tracks'] as $track) {
     echo "<a href='" . $track['link'] . "'>" . $track['name'] . "</a>";
 }
-echo "</div></br><h3>Groups</h3><h3>Close</h3></div><center>";
+echo "<h3><a>Groups</a></h3><h3><a>Close</a></h3></div></div><center>";
 
 
 
