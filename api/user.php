@@ -4,19 +4,24 @@ chdir('../');
 
 use mosaic\user;
 
+$usercli = new user();
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    $userarray = array();
+    if (isset($_GET['id'])) {
+        print_r($usercli->get($_GET['id']));
+    } else {
+        $userarray = array();
 
-    foreach (json_decode(file_get_contents('lists.json'), true) as $user) {
-        if ($user != null) {
-            array_push($userarray, $user);
+        foreach (json_decode(file_get_contents('lists.json'), true) as $user) {
+            if ($user != null) {
+                array_push($userarray, $user);
+            }
         }
+        print_r(json_encode($userarray));
     }
-    print_r(json_encode($userarray));
 } elseif ($_SERVER['REQUEST_METHOD'] == 'PATCH') {
     $patch = json_decode(file_get_contents('php://input'), true);
-    $usercli = new user();
+
 
     $usercli->update($patch['id'], $patch['private']);
 }
