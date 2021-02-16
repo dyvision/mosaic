@@ -5,14 +5,14 @@ include('lib/mosaic.php');
 use mosaic\top;
 
 if(isset($_COOKIE['refresh'])){
-    $header = "<a class='navbar-item' onclick='showprofile();'>Profile</a><a class='navbar-item' href='api/logout.php'>Logout</a>";
+    $header = "<h3><a class='navbar-item' onclick='showprofile();'>Profile</a></h3><h3><a class='navbar-item' href='api/logout.php'>Logout</a></h3>";
 }else{
     $header = "<a href='authorize.php'>Connect</a>";
 }
 
 
 echo "<head><link rel='shortcut icon' type='image/png' href='style/MosaicLogo.png'/><title>Mosaic</title><meta name='viewport' content='width=device-width, initial-scale=1'>
-<link href='style/style.css' rel='stylesheet'><script src='lib/mosaic.js'></script></head><body onload='getcount();'></br><center><h1>Welcome to Mosaic</h1><h3>$header</h3><span>Check out <span id='count'>0</span> users' top songs for the past 4 weeks. Click on a song to listen to it or share yours by clicking connect</span></center></br>";
+<link href='style/style.css' rel='stylesheet'><script src='lib/mosaic.js'></script></head><body onload='getcount();'></br><center><h1>Welcome to Mosaic</h1>$header<span>Check out <span id='count'>0</span> users' top songs for the past 4 weeks. Click on a song to listen to it or share yours by clicking connect</span></center></br>";
 
 $usercli = new top();
 $user = json_decode($usercli->get(null,$_COOKIE['username']),true);
