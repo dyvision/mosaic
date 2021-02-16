@@ -7,7 +7,7 @@ use mosaic\top;
 if(isset($_COOKIE['refresh'])){
     $header = "<h3 class='navbar-item'><a  onclick='showprofile();'>Profile</a></h3><h3 class='navbar-item'><a  href='api/logout.php'>Logout</a></h3>";
 }else{
-    $header = "<a href='authorize.php'>Connect</a>";
+    $header = "<h3 class='navbar-item'><a href='authorize.php'>Connect</a></h3>";
 }
 
 
