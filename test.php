@@ -7,7 +7,7 @@
  $mosaic = new auth();
  
 
-$tokencont = file_get_contents("tokens.json");
+$tokencont = file_get_contents("/var/www/html/db/mosaic/tokens.json");
 $Parsetoken = json_decode($tokencont,true);
 
 foreach($Parsetoken as $token){

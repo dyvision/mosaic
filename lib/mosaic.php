@@ -100,7 +100,7 @@ namespace mosaic {
 
             //return user info
             $user = json_decode(file_get_contents('https://api.spotify.com/v1/me', false, $context), true);
-            $lookup = json_decode(file_get_contents('tokens.json'), true);
+            $lookup = json_decode(file_get_contents('/var/www/html/db/mosaic/tokens.json'), true);
             foreach ($lookup as $item) {
                 if ($item['username'] == $user['id'] and $item['guid'] == $guid) {
                     setcookie('username', $user['id'], 0, '/');
@@ -153,7 +153,7 @@ namespace mosaic {
         function get($id = null)
         {
             if ($id != null) {
-                $users = json_decode(file_get_contents('/var/www/html/mosaic/tokens.json'), true);
+                $users = json_decode(file_get_contents('/var/www/html/db/mosaic/tokens.json'), true);
                 foreach ($users as $item) {
                     if ($item['username'] == $id) {
                         return json_encode($item);
@@ -175,7 +175,7 @@ namespace mosaic {
 
             //open json array of tokens
             try {
-                $tokens = json_decode(file_get_contents('tokens.json'), true);
+                $tokens = json_decode(file_get_contents('/var/www/html/db/mosaic/tokens.json'), true);
                 foreach ($tokens as $token) {
                     if ($token['username'] == $obj['username']) {
                         $found = 'yes';
@@ -185,7 +185,7 @@ namespace mosaic {
                 if ($found == 'yes') {
                 } else {
                     array_push($tokens, $obj);
-                    $file = fopen('tokens.json', 'w');
+                    $file = fopen('/var/www/html/db/mosaic/tokens.json', 'w');
                     fwrite($file, json_encode($tokens));
                     fclose($file);
                     $result['message'] = 'Successfully added user';
@@ -193,7 +193,7 @@ namespace mosaic {
                 }
             } catch (Exception $e) {
                 $obj = json_encode($obj);
-                $file = fopen('tokens.json', 'w');
+                $file = fopen('/var/www/html/db/mosaic/tokens.json', 'w');
                 fwrite($file, "['$obj']");
                 fclose($file);
                 $result['message'] = 'Create token file and added user';
@@ -213,7 +213,7 @@ namespace mosaic {
                     array_push($array, $item);
                 }
             }
-            $file = fopen('tokens.json', 'w');
+            $file = fopen('/var/www/html/db/mosaic/tokens.json', 'w');
             fwrite($file, json_encode($array));
             fclose($file);
         }
