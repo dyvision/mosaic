@@ -88,7 +88,7 @@ namespace mosaic {
             return $response;
         }
         //Function to see if the user actually exists
-        function login($token, $refreshtoken)
+        function login($token, $refreshtoken,$guid)
         {
 
             //create auth header
@@ -100,9 +100,14 @@ namespace mosaic {
 
             //return user info
             $user = json_decode(file_get_contents('https://api.spotify.com/v1/me', false, $context), true);
-
-            setcookie('username', $user['id'], 0, '/');
-            setcookie('refresh', $refreshtoken, 0, '/');
+            $lookup = json_decode(file_get_contents('tokens.json'), true);
+            foreach ($lookup as $item) {
+                if ($item['username'] == $user['id'] and $item['guid'] == $guid) {
+                    setcookie('username', $user['id'], 0, '/');
+                    setcookie('refresh', $refreshtoken, 0, '/');
+                    setcookie('session', $item['guid'], 0, '/');
+                }
+            }
         }
         function logout()
         {
@@ -166,6 +171,7 @@ namespace mosaic {
             $obj['username'] = $id;
             $obj['token'] = $refreshtoken;
             $obj['private'] = false;
+            $obj['guid'] = file_get_contents('https://www.uuidgenerator.net/api/version1');
 
             //open json array of tokens
             try {
@@ -183,6 +189,7 @@ namespace mosaic {
                     fwrite($file, json_encode($tokens));
                     fclose($file);
                     $result['message'] = 'Successfully added user';
+                    $result['guid'] = $obj['guid'];
                 }
             } catch (Exception $e) {
                 $obj = json_encode($obj);
@@ -194,12 +201,12 @@ namespace mosaic {
             }
             return json_encode($result);
         }
-        function update($id, $private)
+        function update($id, $guid, $private)
         {
             $users = json_decode(file_get_contents('/var/www/html/mosaic/tokens.json'), true);
             $array = [];
             foreach ($users as $item) {
-                if ($item['username'] == $id) {
+                if ($item['username'] == $id and $item['guid'] == $guid) {
                     $item['private'] = $private;
                     array_push($array, $item);
                 } else {
