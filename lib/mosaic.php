@@ -88,7 +88,7 @@ namespace mosaic {
             return $response;
         }
         //Function to see if the user actually exists
-        function login($token, $refreshtoken,$guid)
+        function login($token, $refreshtoken, $guid)
         {
 
             //create auth header
@@ -174,33 +174,24 @@ namespace mosaic {
             $obj['guid'] = uniqid();
 
             //open json array of tokens
-            try {
-                $tokens = json_decode(file_get_contents('/var/www/html/db/mosaic/tokens.json'), true);
-                foreach ($tokens as $token) {
-                    if ($token['username'] == $obj['username']) {
-                        $found = 'yes';
-                        $guid = $token['guid'];
-                    } else {
-                    }
-                }
-                if ($found == 'yes') {
-                    $result['message'] = 'User exists, logging in';
-                    $result['guid'] = $guid;
+            $tokens = json_decode(file_get_contents('/var/www/html/db/mosaic/tokens.json'), true);
+            foreach ($tokens as $token) {
+                if ($token['username'] == $obj['username']) {
+                    $found = 'yes';
+                    $guid = $token['guid'];
                 } else {
-                    array_push($tokens, $obj);
-                    $file = fopen('/var/www/html/db/mosaic/tokens.json', 'w');
-                    fwrite($file, json_encode($tokens));
-                    fclose($file);
-                    $result['message'] = 'Successfully added user';
-                    $result['guid'] = $obj['guid'];
                 }
-            } catch (Exception $e) {
-                $obj = json_encode($obj);
+            }
+            if ($found == 'yes') {
+                $result['message'] = 'User exists, logging in';
+                $result['guid'] = $guid;
+            } else {
+                array_push($tokens, $obj);
                 $file = fopen('/var/www/html/db/mosaic/tokens.json', 'w');
-                fwrite($file, "['$obj']");
+                fwrite($file, json_encode($tokens));
                 fclose($file);
-                $result['message'] = 'Create token file and added user';
-                $result['error'] = $e->getMessage();
+                $result['message'] = 'Successfully added user';
+                $result['guid'] = $obj['guid'];
             }
             return json_encode($result);
         }
