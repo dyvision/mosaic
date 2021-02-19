@@ -157,6 +157,7 @@ namespace mosaic {
                 foreach ($users as $item) {
                     if ($item['username'] == $id) {
                         return json_encode($item);
+                        break;
                     }
                 }
             } else {
@@ -179,6 +180,7 @@ namespace mosaic {
                 if ($token['username'] == $obj['username']) {
                     $found = 'yes';
                     $guid = $token['guid'];
+                    break;
                 } else {
                 }
             }
@@ -226,6 +228,7 @@ namespace mosaic {
                 foreach ($users as $user) {
                     if ($user['display_name'] == $id) {
                         return json_encode($user);
+                        break;
                     }
                 }
             } else {
