@@ -171,7 +171,7 @@ namespace mosaic {
             $obj['username'] = $id;
             $obj['token'] = $refreshtoken;
             $obj['private'] = false;
-            $obj['guid'] = file_get_contents('https://www.uuidgenerator.net/api/version1');
+            $obj['guid'] = uniqid();
 
             //open json array of tokens
             try {
