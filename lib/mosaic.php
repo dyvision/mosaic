@@ -179,10 +179,13 @@ namespace mosaic {
                 foreach ($tokens as $token) {
                     if ($token['username'] == $obj['username']) {
                         $found = 'yes';
+                        $guid = $token['guid'];
                     } else {
                     }
                 }
                 if ($found == 'yes') {
+                    $result['message'] = 'User exists, logging in';
+                    $result['guid'] = $guid;
                 } else {
                     array_push($tokens, $obj);
                     $file = fopen('/var/www/html/db/mosaic/tokens.json', 'w');

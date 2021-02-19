@@ -14,7 +14,11 @@ try {
     $userj = json_decode($mosaic->verify($token['access_token']),true);
     $create = json_decode($user->create($userj['id'],$token['refresh_token']),true);
     shell_exec('curl https://mosaic.paos.io/api/lists.php &');
-    $mosaic->login($token['access_token'],$token['refresh_token'],$create['guid']);
+    if(isset($create['guid'])){
+        $mosaic->login($token['access_token'],$token['refresh_token'],$create['guid']);
+    } else {
+        $mosaic->login($token['access_token'],$token['refresh_token'],$_COOKIE['session']);
+    }
     header('location: /home.php');
 } catch (Exception $e) {
     header('location: https://mosaic.paos.io/authorize.php');
