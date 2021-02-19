@@ -160,7 +160,7 @@ namespace mosaic {
                     }
                 }
             } else {
-                return file_get_contents('/var/www/html/mosaic/tokens.json');
+                return file_get_contents('/var/www/html/db/mosaic/tokens.json');
             }
         }
         //Function to append a new user to that text database
