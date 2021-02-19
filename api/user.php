@@ -8,7 +8,11 @@ $usercli = new user();
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (isset($_GET['id'])) {
-        print_r($usercli->get($_GET['id']));
+        $response = [];
+        $user = json_decode($usercli->get($_GET['id']),true);
+        $response['username'] = $user['username'];
+        $response['private'] = $user['private'];
+        print_r(json_encode($response));
     } else {
         $userarray = array();
 
