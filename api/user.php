@@ -23,5 +23,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $patch = json_decode(file_get_contents('php://input'), true);
 
 
-    $usercli->update($patch['id'], $patch['private']);
+    $usercli->update($patch['id'], $patch['guid'],$patch['private']);
 }
