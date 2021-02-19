@@ -197,7 +197,7 @@ namespace mosaic {
         }
         function update($id, $guid, $private)
         {
-            $users = json_decode(file_get_contents('/var/www/html/mosaic/tokens.json'), true);
+            $users = json_decode(file_get_contents('/var/www/html/db/mosaic/tokens.json'), true);
             $array = [];
             foreach ($users as $item) {
                 if ($item['username'] == $id and $item['guid'] == $guid) {
