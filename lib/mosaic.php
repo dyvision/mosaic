@@ -227,7 +227,7 @@ namespace mosaic {
             if ($id != null) {
                 $users = json_decode(file_get_contents('/var/www/html/mosaic/lists.json'), true);
                 foreach ($users as $user) {
-                    if ($user['display_name'] == $id) {
+                    if ($user['id'] == $id) {
                         return json_encode($user);
                         break;
                     }

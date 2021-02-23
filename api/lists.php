@@ -29,6 +29,7 @@ foreach ($users as $user) {
         }
         $obj['display_name'] = $username['display_name'];
         $obj['url'] = $username['external_urls']['spotify'];
+        $obj['id'] = $username['id'];
 
 
         foreach (json_decode($playlistcli->get($token['access_token']), true) as $track) {
