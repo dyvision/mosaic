@@ -106,6 +106,7 @@ namespace mosaic {
                     setcookie('username', $user['id'], 0, '/');
                     setcookie('refresh', $refreshtoken, 0, '/');
                     setcookie('session', $item['guid'], 0, '/');
+                    break;
                 }
             }
         }
