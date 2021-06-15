@@ -5,7 +5,7 @@ include('lib/mosaic.php');
 use mosaic\top;
 use mosaic\user;
 
-echo "<a href='https://mosaic.faunus.io'><center style='width:100%;height:auto;background:green;color:white'><h3>Check out Mosaic 2.0 by clicking here</h3></center>";
+echo "<a href='https://mosaic.faunus.io'><center style='width:100%;height:auto;background:#63c163;color:white;padding:2%'><h3>Check out Mosaic 2.0 by clicking here</h3></center></a>";
 
 $kofi = "<script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Support Mosaic on Ko-fi', '#29abe0', 'E1E822CWN');kofiwidget2.draw();</script>";
 
